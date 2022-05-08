@@ -1,0 +1,105 @@
+{% extends 'main_page.html' %}
+{% load i18n %}
+{% block title %}Categories{% endblock %}
+
+{%block content%}
+
+<style>
+    table{
+        width:95%;
+        font-size:30px;
+        margin: 0 auto;
+    }
+    th{
+        padding:2px
+    }
+    a, td, p, h3{
+       color: white;
+       text-decoration:none;
+    }
+    a:hover{
+        text-decoration: underline;
+        color: #FBD784;
+        opacity: 1;
+    }
+</style>
+
+
+
+
+<div>
+<table border>
+
+           {% for category in categories %}
+         <th>
+             <a href="{% url 'mountains:subcategories' pk=category.pk %}">{{category.title}}</a>
+         </th>
+            {% endfor %}
+     </tr>
+
+</table>
+</div>
+
+
+
+<table>
+    <form method="GET">
+        {{ filter.form.as_p }}
+        <input type="submit" name="ft"/>
+    </form>
+</table>
+
+<table border>
+
+      {% for equipment in filter.qs %}
+
+        <tr>
+           <td>
+               <p><a href="{% url 'mountains:detail_equipment' pk=equipment.pk %}">{{ equipment.title }}</a></p>
+               <p>Price: {{ equipment.price }}$</p>
+               <p>Brand: {{ equipment.brand }}</p>
+           </td>
+            <td><div>
+                <a href="{% url 'mountains:detail_equipment' pk=equipment.pk %}"><img src="{{equipment.image.url}}" alt=""></a>
+            </div></td>
+        </tr>
+
+    {% endfor %}
+
+
+</table>
+<h3>{% trans 'Popular' %}:</h3>
+<table border>
+        {% for p in popular %}
+    <tr>
+        <td>
+            <p><a href="{% url 'mountains:detail_equipment' pk=p.pk %}">{{p.equipment.title}}</a></p>
+            <p>{{p.equipment.price}}</p>
+            <p>{{p.equipment.brand}}</p>
+        </td>
+        <td><div>
+              <img src="{{p.equipment.image.url}}" alt="">
+            </div></td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+<h3>You watched:</h3>
+<table border>
+    {% for item in seen_equipments %}
+        <tr>
+            <td>
+                <p><a href="{% url 'mountains:detail_equipment' pk=item.pk %}">{{item.title}}</a></p>
+                <p>{{item.price}}</p>
+                <p>{{item.brand}}</p>
+            </td>
+            <td><div>
+              <img src="{{item.image.url}}" alt="">
+            </div></td>
+        </tr>
+    {% endfor %}
+</table>
+
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'main_page.html' %}
+
+{% block title %}Enter{% endblock %}
+
+{%block content%}
+
+<style>
+    h2, a, h1, p{color:white; opacity: .85}
+</style>
+
+<h1>Hello {{user.username}}!</h1>
+
+
+
+{% if wish %}
+    <h2>Your wishes: {% for w in wish.equipments.all %} <p>{{w.title}} </p>{% endfor %} </h2>
+    <p><a href="{% url 'mountains:wish_remove' %}">Remove wishes</a></p>
+{% else %}
+    <p>You have removed your wishes!</p>
+{% endif %}
+
+
+<h2><a href="{% url 'mountains:profile_change' %}">Change User information</a></h2>
+
+<h2><a href="{% url 'mountains:password_change' %}">Change User password</a></h2>
+
+<h3><a href="{% url 'cart:cart_detail' %}">See your basket</a></h3>
+
+<h3><a href="{% url 'mountains:logout' %}">Exit</a></h3>
+
+<h3><a href="{% url 'mountains:profile' %}">Yor profile</a></h3>
+
+<form action="" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button>Sent</button>
+</form>
+
+{% endblock %}

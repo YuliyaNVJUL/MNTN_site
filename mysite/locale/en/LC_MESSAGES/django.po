@@ -1,0 +1,115 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-04-04 08:25+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: mountains/models.py:44 mountains/templates/detail_equipment.html:37
+msgid "Title"
+msgstr ""
+
+#: mountains/models.py:45 mountains/templates/detail_equipment.html:38
+msgid "Brand"
+msgstr ""
+
+#: mountains/models.py:46 mountains/templates/detail_equipment.html:40
+msgid "Available"
+msgstr ""
+
+#: mountains/models.py:47 mountains/templates/detail_equipment.html:39
+msgid "Price"
+msgstr ""
+
+#: mountains/models.py:48 mountains/templates/detail_equipment.html:41
+msgid "Remainder"
+msgstr ""
+
+#: mountains/models.py:49 mountains/templates/detail_equipment.html:42
+msgid "Description"
+msgstr ""
+
+#: mountains/models.py:50 mountains/templates/detail_equipment.html:43
+msgid "Subcategory"
+msgstr ""
+
+#: mountains/models.py:52
+msgid "Comments"
+msgstr ""
+
+#: mountains/models.py:53
+msgid "Characteristics"
+msgstr ""
+
+#: mountains/models.py:54 mountains/templates/detail_equipment.html:45
+msgid "Discount"
+msgstr ""
+
+#: mountains/templates/all_categories.html:71
+msgid "Popular"
+msgstr ""
+
+#: mountains/templates/detail_equipment.html:50
+msgid "Stores"
+msgstr ""
+
+#: mountains/templates/detail_equipment.html:73
+msgid "Reviews"
+msgstr ""
+
+#: mountains/templates/main_page.html:49
+msgid "Catalog"
+msgstr ""
+
+#: mountains/templates/main_page.html:50
+msgid "About us"
+msgstr ""
+
+#: mountains/templates/main_page.html:51
+msgid "Blog"
+msgstr ""
+
+#: mountains/templates/main_page.html:55
+msgid "Account"
+msgstr ""
+
+#: mountains/templates/main_page.html:56
+msgid "Registration"
+msgstr ""
+
+#: mountains/templates/main_page.html:57
+msgid "Basket"
+msgstr ""
+
+#: mountains/templates/main_page.html:69
+msgid "A HIKING GUIDE"
+msgstr ""
+
+#: mountains/templates/main_page.html:70
+msgid "Be Prepeared For The Mountains And Beyond"
+msgstr ""
+
+#: mountains/templates/main_page.html:71
+msgid "scroll down"
+msgstr ""
+
+#: mysite/settings.py:163
+msgid "English"
+msgstr ""
+
+#: mysite/settings.py:164
+msgid "Polish"
+msgstr ""

@@ -1,0 +1,61 @@
+{% extends 'main_page.html' %}
+
+{% block title %}All posts{% endblock %}
+
+{%block content%}
+
+<style>
+    table{
+        width:75%;
+        font-size:25px;
+        margin: 0 auto;
+    }
+    td, th{
+        padding:2px;
+        width:90%;
+        color:white;
+    }
+    a, p{
+       color: white;
+       text-decoration:none;
+    }
+    a:hover{
+        text-decoration: underline;
+        color: #FBD784;
+        opacity: 1;
+    }
+</style>
+
+
+<div>
+<table border>
+    <tr>
+        <td>Title</td>
+        <td>Post short description</td>
+        <td><a href="">Add Post</a></td>
+    </tr>
+    {% for post in page_obj %}
+    <tr>
+        <th><a href="{% url 'mountains:post_details' pk=post.pk%}">{{post.title}}</a></th>
+        <th><a href="">{{post.short_description}}</a></th>
+    </tr>
+    {% endfor %}
+</table>
+</div>
+
+
+<nav>
+    <ul>
+        {% for post in page_obj.paginator.page_range %}
+        <li>
+            <a href="?page={{post}}">{{post}}</a>
+        </li>
+        {% endfor %}
+    </ul>
+</nav>
+
+
+
+
+
+{% endblock %}

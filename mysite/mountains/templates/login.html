@@ -1,0 +1,41 @@
+{% extends 'main_page.html' %}
+{% load socialaccount %}
+{% providers_media_js %}
+
+
+
+{% block title %}Login{% endblock %}
+
+{%block content%}
+<style>
+    h2, a, p {color:white; opacity: .85; text-decoration:none}
+</style>
+<h2>Enter</h2>
+
+
+{% if user.is_authenticated %}
+<h2 style="color:white">Вы уже выполнили вход!</h2>
+
+
+
+
+{% else %}
+<h2><a href="{% url 'mountains:registration' %}">Registration</a></h2>
+<form action="" method="POST">
+    {%csrf_token%}
+    {{form.as_p}}
+    <button>Ok</button>
+</form>
+
+
+<p><a href="{% provider_login_url 'google' method=js_sdk %}"> Google login </a></p>
+
+{% endif %}
+
+
+
+<h3><a href="{% url 'mountains:profile' %}">Yor profile</a></h3>
+
+<h3><a href="{% url 'mountains:logout' %}">Exit</a></h3>
+
+{%endblock%}

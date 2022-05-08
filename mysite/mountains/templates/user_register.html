@@ -1,0 +1,22 @@
+{% extends 'main_page.html' %}
+
+{% block title %}Registration{% endblock %}
+
+{%block content%}
+<style>
+    h2, a, p {color:white; opacity: .85; text-decoration:none}
+</style>
+<h2>Enter</h2>
+
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button>Ok</button>
+</form>
+
+
+
+
+
+{% endblock %}

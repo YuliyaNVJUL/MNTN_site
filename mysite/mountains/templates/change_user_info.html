@@ -1,0 +1,20 @@
+{% extends 'main_page.html' %}
+
+{% block title %}Change User information:{% endblock %}
+
+{%block content%}
+<style>
+    h2, a, p {color:white; opacity: .85; text-decoration:none}
+</style>
+<h2>User information change</h2>
+
+<form action="" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button>Change</button>
+</form>
+
+
+
+
+{% endblock %}

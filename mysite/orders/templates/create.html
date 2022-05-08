@@ -1,0 +1,53 @@
+{% extends 'main_page.html' %}
+
+{% block content %}
+
+<style>
+    table{
+        width:75%;
+        font-size:25px;
+        margin: 0 auto;
+    }
+    p {
+       color: white;
+       text-decoration:none;
+    }
+</style>
+
+
+<p>Total: ${{ cart.get_total_price }}</p>
+
+    <form action="." method="post" class="order-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <p>Choose Store for delivery: <select name="stor" id="2">
+            {% for store in stores %}
+            <option value="{{store.id}}">{{store.city}} - {{store.title}} - {{store.address}} </option>
+            {% endfor %}
+        </select></p>
+
+         <p>Choose delivery: <select name="del" id="1">
+             {% for delivery in deliveries %}
+                <option value="{{delivery.id}}"> {{delivery.delivery_option}} </option>
+             {% endfor %}
+         </select></p>
+
+        <p> Choose Payment: <select name="pay" id="3">
+             {% for delivery in deliveries %}
+         <option value="{{delivery.id}}"> -------- {{delivery.delivery_option}} -------- {% for d in delivery.payments.all %}
+            <option value="{{d.id}}">{{d.payment}}</option> {% endfor %} </option>
+               {% endfor %}
+        </select></p>
+
+
+
+
+
+
+
+        <p><input type="submit" value="Place order"></p>
+
+    </form>
+
+{% endblock %}

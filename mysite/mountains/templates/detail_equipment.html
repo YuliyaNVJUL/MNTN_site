@@ -1,0 +1,92 @@
+{% extends 'main_page.html' %}
+{% load i18n %}
+{% block title %}Equipment{% endblock %}
+
+{%block content%}
+{% load static %}
+<style>
+    table{
+        width:75%;
+        font-size:25px;
+        margin: 0 auto;
+    }
+    td{
+        padding:2px;
+        width:90%;
+    }
+    a, p, h6, h5{
+       color: white;
+       text-decoration:none;
+    }
+    a:hover{
+        text-decoration: underline;
+        color: #FBD784;
+        opacity: 1;
+    }
+</style>
+
+
+
+<div>
+<table border>
+
+
+
+     <tr>
+        <td>
+            <p> {% trans 'Title' %}: {{equipment.title}}</p>
+            <p> {% trans 'Brand'%}: {{equipment.brand.title}}</p>
+            <p> {% trans 'Price' %}: {{equipment.price}}</p>
+            <p> {% trans 'Available' %}: {{equipment.available}}</p>
+            <p> {% trans 'Remainder' %}: {{equipment.remainder}}</p>
+            <p> {% trans 'Description' %}: {{equipment.description}}</p>
+            <p> {% trans 'Subcategory' %}: {{equipment.subcategory}}</p>
+                {% if equipment.discount %}
+            <p> {% trans 'Discount' %}: - {{equipment.discount}}% - Price with discount: {{equipment.get_discount|floatformat:"2" }}$</p>
+                {% endif %}
+            {% if equipment.characteristic %}
+            <p> Characteristics: {{equipment.characteristic.level}}, {{equipment.characteristic.appointment}}</p>
+            {% endif %}
+            <p>  {% trans 'Stores' %}: {% for store in stores %}
+               <h5>{{store.title}} - {{store.city.title}}, {{store.address}}, work time: {{store.work_schedule}}</h5>
+                {% endfor %}</p>
+
+
+            <form action="{% url 'cart:cart_add' equipment.id %}" method="post">
+                {% csrf_token %}
+                {{ cart_equipment_form.as_p }}
+                <input type="submit" value="Add to cart">
+            </form>
+
+
+            <form action="" method="post">
+                {% csrf_token %}
+                {{wishform.as_p}}
+                <input type="submit" value="Add to wishes" name="Add to wishes">
+            </form>
+
+            <p>{% trans 'Reviews' %}:</p>
+            {% for comment in equipment.comments.all %}
+                <p>{{comment.user}}:   {{comment.text}}   <h6>{{comment.created_on}}</h6></p>
+            {% endfor %}
+            <form action="" method="post">
+                {% csrf_token %}
+                {{form.as_p}}
+                <button>Add</button>
+            </form>
+        </td>
+
+
+        <td>
+            <div>
+                <img src="{{equipment.image.url}}" alt="">
+            </div>
+        </td>
+    </tr>
+
+</table>
+</div>
+
+
+
+{% endblock %}

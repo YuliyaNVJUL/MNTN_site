@@ -1,0 +1,45 @@
+{% extends 'main_page.html' %}
+
+{% block title %}Equipment{% endblock %}
+
+{%block content%}
+
+<style>
+    table{
+        width:75%;
+        font-size:30px;
+        margin: 0 auto;
+    }
+    td{
+        padding:2px;
+        width:90%;
+    }
+    a{
+       color: white;
+       text-decoration:none;
+    }
+    a:hover{
+        text-decoration: underline;
+        color: #FBD784;
+        opacity: 1;
+    }
+</style>
+<div>
+<table border>
+    {% for equipment in equipments %}
+
+
+    
+    <tr>
+        <td><a href="{% url 'mountains:detail_equipment' pk=equipment.pk %}">{{equipment.title}}</a></td>
+        <td>
+            <div>
+                <img src="{{equipment.image.url}}" alt="">
+            </div>
+        </td>
+    </tr>
+     {% endfor %}
+    </table>
+</div>
+
+{% endblock %}

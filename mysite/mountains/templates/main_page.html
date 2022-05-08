@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+
+
+{% load static %}
+
+
+
+
+{% load i18n %}
+
+<form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+    <input name="next" type="hidden" value="{{ redirect_to }}">
+    <select name="language">
+        {% get_current_language as LANGUAGE_CODE %}
+        {% get_available_languages as LANGUAGES %}
+        {% get_language_info_list for LANGUAGES as languages %}
+        {% for language in languages %}
+            <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                {{ language.name_local }} ({{ language.code }})
+            </option>
+        {% endfor %}
+    </select>
+    <input type="submit" value="Go">
+</form>
+<p style="color:white">Send message to Telegram:</pstyle>
+<form action="" method="post">
+    {% csrf_token %}
+    <p style="color:white">Phone<input type="text" name="phone"></p>
+    <p style="color:white">Name<input type="text", name="name"></p>
+    <input type="submit" name="Send" value="Send">
+</form>
+
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MNTN</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body class="body__color">
+<header class="header">
+    <div class="header-wrapper">
+        <div class="header-logo">
+            <a  class="logo"href="{% url 'mountains:main_page' %}"><span >MNTN</span></a>
+        </div>
+        <div class="header-content">
+            <nav class="nav">
+                <a class='nav__link' href="{% url 'mountains:all_categories' %}"> {% trans 'Catalog' %}</a>
+                <a class='nav__link' href="#">{% trans 'About us' %}</a>
+                <a class='nav__link' href="{% url 'mountains:all_posts' %}">{% trans 'Blog' %}</a>
+            </nav>
+        </div>
+        <div class="account">
+            <a class='nav__account' href="{% url 'mountains:login' %}">{% trans 'Account' %} / </a>
+            <a class='nav__account' href="{% url 'mountains:registration' %}"> Registration / </a>
+            <a class='nav__account' href="{% url 'cart:cart_detail' %}">{%trans 'Basket' %}</a>
+        </div>
+    </div>
+</header>
+
+
+
+{% block content%}
+
+<div class="main-page">
+    <div class="main-fon">
+        <div class="blok-text">
+            <div class="a-hiking-guide">{% trans 'A HIKING GUIDE' %}</div>
+            <h1 class="be-ready">{% trans 'Be Prepeared For The Mountains And Beyond' %}!</h1>
+            <a class="scroll-down" href="#">{% trans 'scroll down'%} &#8595;</a>
+                    </div>
+        <button class="for-button">
+            <a class='BUTTOM' href="3">Button</a>
+        </button>
+
+
+
+         <img class='main-img' src="{% static 'img/BG.jpg' %}" alt="">
+
+              <div class="article" >
+                  <div class="article-text" data-number="01">
+
+                      <div class="article-subtitle">Get Started</div>
+
+                      <div class="article-title"> What level of hiker are you?</div>
+
+                      <p class="determining">Determining what level of hiker you are can be an important tool when planning future hikes.
+                      This hiking level guide will help you plan hikes according to different hike ratings set by
+                      various websites like All Trails and Modern Hiker. What type of hiker are you – novice, moderate,
+                      advanced moderate, expert, or expert backpacker?</p>
+                      <div class="read-more">read more &#8594</div>
+
+                  </div>
+                  <div class="article-img">
+                      <img src="{% static 'img/03.jpg' %}" alt="">
+                  </div>
+              </div>
+              <div class="article2">
+                   <div class="article2-img">
+                      <img src="{% static 'img/02.jpg' %}" alt="">
+                  </div>
+
+                  <div class="article2-text" data-number2="02">
+                      <div class="article2-subtitle">Hiking Essentials</div>
+                      <div class="article2-title">Picking the right Hiking Gear!</div>
+                      <p class="determining2">The nice thing about beginning hiking is that you don’t really need
+                          any special gear, you can probably get away with things you already have.
+                          Let’s start with clothing. A typical mistake hiking beginners make is wearing
+                          jeans and regular clothes, which will get heavy and chafe wif they get sweaty or wet.</p>
+                      <div class="read-more2">&#8592 read more</div>
+              </div>
+                  </div>
+            <div class="article3">
+                  <div class="article3-text" data-number3="03">
+                      <div class="article3-subtitle">where you go is the key</div>
+
+                      <div class="article3-title"> Understand Your Map & Timing</div>
+
+                      <p class="determining3">To start, print out the hiking guide and map.
+                          If it’s raining, throw them in a Zip-Lock bag. Read over the guide, study the map,
+                          and have a good idea of what to expect. I like to know what my next landmark is as I hike.
+                          For example, I’ll read the guide and know that say, in a mile, I make a right turn at the
+                          junction..</p>
+                      <div class="read-more3">read more &#8594</div>
+                  </div>
+                  <div class="article-img">
+                      <img src="{% static 'img/01.jpg' %}" alt="">
+                  </div>
+              </div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+<footer class="footer">
+   <div class="container">
+        <div class="footer-copyright">
+            <div class="footer-logo">MNTN</div>
+            <div class="footer-text">Get out there & discover your next slope, mountain & destination!</div>
+            <div class="footer-copyright1">Copyright 2019 MNTN, Inc. Terms & Privacy</div>
+        </div>
+        <div class="footer-nav">
+           <div class="footer-nav1">
+           <h4 class="footer-nav1-title">More on The Blog</h4>
+           <ul>
+               <li><a href="#">About MNTN</a></li>
+               <li><a href="#">Contributors & Writers</a></li>
+               <li><a href="#">Write For Us</a></li>
+               <li><a href="#">Contact Us</a></li>
+               <li><a href="#">Privacy Policy</a></li>
+           </ul>
+       </div>
+            <div class="footer-nav2">
+           <h4 class="footer-nav2-title">More on MNTN</h4>
+           <ul>
+               <li><a href="#">The Team</a></li>
+               <li><a href="#">Jobs</a></li>
+               <li><a href="#">Press</a</li>
+           </ul>
+       </div>
+
+        </div>
+
+   </div>
+</footer>
+
+
+
+
+</body>
+</html>
+
+

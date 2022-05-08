@@ -1,0 +1,23 @@
+{% extends 'main_page.html' %}
+
+{% block content %}
+
+<style>
+    table{
+        width:75%;
+        font-size:25px;
+        margin: 0 auto;
+    }
+    p, h1{
+       color: white;
+       text-decoration:none;
+    }
+</style>
+
+
+
+ <h1>Thank you!</h1>
+    <p>Your order has been successfully completed. Your order number is
+        <strong>{{ order.id }}</strong>.</p>
+
+{% endblock %}}

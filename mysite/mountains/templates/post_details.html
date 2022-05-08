@@ -1,0 +1,78 @@
+{% extends 'main_page.html' %}
+
+{% block title %}Post details{% endblock %}
+
+{%block content%}
+
+<style>
+    table{
+        width:95%;
+        font-size:25px;
+        margin: 0 auto;
+    }
+    td, th, p, form, a {
+        padding:2px;
+        width:90%;
+        color:white;
+        text-decoration:none;
+    }
+      a:hover{
+        text-decoration: underline;
+        color: #FBD784;
+        opacity: 1;
+    }
+</style>
+
+
+
+<div>
+<table border>
+    <tr>
+        <th>{{post.title}}</th>
+    </tr>
+
+    <tr>
+        <td>
+            <p>{{post.content}}</p>
+            <p>{{post.user}}</p>
+            <p>{{post.created_on}}</p>
+        </td>
+    </tr>
+
+
+    <tr>
+        <td>
+            <h6>To add comment You need to <a href="{% url 'mountains:login' %}">log</a> in to Your account
+                or <a href="{% url 'mountains:registration' %}">register!</a></h6>
+            <p>Comments:</p>
+
+            {% for comment in page_obj %}
+                <p>{{comment.user}}:   {{comment.text}}   <h6>{{comment.created_on}}</h6></p>
+            {% endfor %}
+
+
+            <form action="" method="post">
+                {% csrf_token %}
+                {{form.as_p}}
+                <button>Add</button>
+            </form>
+
+
+            <nav>
+                <ul>
+                    {% for comment in page_obj.paginator.page_range %}
+                    <li>
+                        <a href="?page={{comment}}">{{comment}}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </nav>
+
+
+        </td>
+    </tr>
+</table>
+</div>
+
+
+{% endblock %}

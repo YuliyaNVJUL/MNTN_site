@@ -1,0 +1,38 @@
+{% extends 'main_page.html' %}
+
+{% block title %}Subcategories{% endblock %}
+
+{%block content%}
+
+<style>
+    table{
+        width:95%;
+        font-size:30px;
+        margin: 0 auto;
+    }
+    th{
+        padding:2px
+    }
+    a{
+       color: white;
+       text-decoration:none;
+    }
+    a:hover{
+        text-decoration: underline;
+        color: #FBD784;
+        opacity: 1;
+    }
+</style>
+<div>
+<table border>
+    {% for  subcategory in subcategories %}
+     <tr>
+         <th><a href="{% url 'mountains:subcategory_equipment' pk=subcategory.pk %}">{{subcategory.title}}</a></th>
+    </tr>
+    {% endfor %}
+
+
+    </table>
+</div>
+
+{% endblock %}
